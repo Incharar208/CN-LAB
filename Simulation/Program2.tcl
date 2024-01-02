@@ -40,4 +40,5 @@ set n{$i} [$ns node]
 }
 
 # node connection 
-
+for {set j 0} {$j < 5} {incr j} {
+$ns duplex-link $n($j) $n([expr ($j+1)]) 0.1Mb 10ms DropTail
