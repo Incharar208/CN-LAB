@@ -9,16 +9,16 @@ public class UDPClient {
         byte[] receiveData = new byte[1024];
         byte[] sendData = new byte[1024];
 
-        System.out.println("Enter the string that has to be converted to upper case from the server:");
+        System.out.println("Enter the sentence that needs to be converted to uppercase:");
         String sentence = inFromUser.readLine();
         sendData = sentence.getBytes();
         DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
         clientSocket.send(sendPacket);
 
-        DatagramPacket receivePacket = new DatagramPacket(receiveData , receiveData.length);
+        DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
         clientSocket.receive(receivePacket);
-        String modifiedSentence = new String(receivePacket.getData());
-        System.out.println("FROM SERVER: " + modifiedSentence );
+        String modifiedString = new String(receivePacket.getData());
+        System.out.println("RECEIVED FROM SERVER:" + modifiedString);
         clientSocket.close();
 
     }
