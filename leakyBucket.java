@@ -21,7 +21,7 @@ public class leakyBucket {
             buf[i] = in.nextInt();
         }
 
-        System.out.println(String.format("Time\tPacketSize\tAccepted\tSent\tReceived"));
+        System.out.println(String.format("Time\tPacketSize\tAccepted\tSent\tRemaining"));
         for(int i = 0; i < n; i++)
         {
             if(buf[i] != 0)
@@ -46,7 +46,7 @@ public class leakyBucket {
                 if(bucketRemaining < bucketRate)
                 {
                     sent = bucketRemaining;
-                    bucketRemaining = bucketRemaining - bucketRate;
+                    bucketRemaining = 0;
                 }
                 else 
                 {
